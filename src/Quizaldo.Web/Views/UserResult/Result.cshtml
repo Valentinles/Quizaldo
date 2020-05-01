@@ -1,0 +1,20 @@
+﻿@model UserResultViewModel
+@{
+    ViewData["Title"] = "Result";
+}
+
+
+<div class="row">
+    <div class="mx-auto">
+        <div class="mx-auto card-holder">
+            <div class="quizCard text-left" style="width: 20em;">
+                <p class="text-center">Result</p>
+                <p><i class="icon fas fas fa-user fa-1x" style="color: white; margin-right:20px;"></i>  @Model.User.UserName</p>
+                <p><i class="icon fas fas fa-puzzle-piece fa-1x" style="color: white; margin-right:20px; "></i> @Model.Quiz.Name Quiz</p>
+                <p><i class="icon fas fas fa-check-circle fa-1x" style="color: white; margin-right:20px;"></i> @Model.UsersCorrectAnswers Correct</p>
+                <p><i class="icon fas fas fa-times-circle fa-1x" style="color: white; margin-right:20px;"></i> @Model.UsersWrongAnswers Wrong</p>
+                <p><i class="icon fas fas fa-check-double fa-1x" style="color: white; margin-right:20px;"></i> @Model.PointsEarned Points earned</p>
+            </div>
+        </div>
+    </div>
+</div>

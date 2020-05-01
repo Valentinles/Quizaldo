@@ -1,0 +1,39 @@
+﻿@model CreateQuizBindingModel
+
+@{
+    ViewData["Title"] = "CreateQuiz";
+}
+
+<style>
+    .btn-transparent {
+        background-color: transparent;
+        border: none;
+    }
+</style>
+
+<div class="row">
+    <div class="mx-auto">
+
+        <form id="createQuizForm" asp-controller="Quiz" asp-action="CreateQuiz" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mx-auto card-holder">
+                <div class="quizCard text-left" style="width: 20em;">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label">Quiz Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="QuizLogoUrl">Logo (url)</label>
+                        <input asp-for="QuizLogoUrl" class="form-control" />
+                        <span asp-validation-for="QuizLogoUrl" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <button class="btn btn-transparent" type="submit"><i class="icon fas fa-plus fa-3x" style="color: white"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

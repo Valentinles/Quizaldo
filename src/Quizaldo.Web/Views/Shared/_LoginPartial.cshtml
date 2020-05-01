@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<QuizaldoUser> SignInManager
+@inject UserManager<QuizaldoUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="icon fas fas fa-user fa-2x" style="color: white"></i></a>
+    </li>
+    <li>
+        <form id="logoutForm" hidden asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        </form>
+        <a href="#" onclick="document.getElementById('logoutForm').submit()" title="Logout"><i class="icon fas fa-sign-out-alt fa-2x" style="color: white"></i><span class="nav-label"></span></a>
+    </li>
+}
+else
+{
+    <li>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" title="Login"><i class="icon fas fa-sign-in-alt fa-2x" style="color: white"></i></a>
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" title="Register"><i class="icon fas fa-user-plus fa-2x" style="color: white"></i></a>
+    </li>
+}

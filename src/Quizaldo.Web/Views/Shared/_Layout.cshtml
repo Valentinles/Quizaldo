@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Quizaldo.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Index.css" />
+    <link rel="stylesheet" href="~/css/Ranklist.css" />
+</head>
+<body class="bg-style">
+    <header>
+        <ul class="customNav">
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" title="Home"><i class="icon fas fa-home fa-2x" style="color: white"></i></a></li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="CreateQuiz" title="Create Quiz"><i class="icon fas fa-plus-square fa-2x" style="color: white"></i></a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="AddQuestion" title="Add Question"><i class="icon fas fa-question-circle fa-2x" style="color: white"></i></a></li>
+            }
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Ranklist" title="Ranklist"><i class="icon fas fa-list-ol fa-2x" style="color: white"></i></a></li>
+            <li><partial name="_LoginPartial" /></li>
+        </ul>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="https://kit.fontawesome.com/f924ffe81b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

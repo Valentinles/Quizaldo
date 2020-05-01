@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AllQuizzesViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row mx-auto">
+    @if (Model.Count() == 0)
+    {
+        <div class="mx-auto card-holder">
+            <div class="quizCard text-center" style="width: 20em;">
+                <p>No quizzes yet.</p>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="CreateQuiz" title="Create Quiz"><i class="icon fas fa-plus-square fa-2x" style="color: white"></i></a>
+            </div>
+        </div>
+    }
+    else
+    {
+        @foreach (var quiz in Model)
+        {
+            <div class="col-md-3 mx-auto card-holder">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="equalImg" src="@quiz.QuizLogoUrl" />
+                            <h5>Quiz </h5>
+                            <h4>@quiz.Name </h4>
+                            @if (@quiz.QuizQuestions.Count == 0)
+                            {
+                                <p>No questions yet</p>
+                            }
+                            else if (@quiz.QuizQuestions.Count == 1)
+                            {
+                                <p>@quiz.QuizQuestions.Count question</p>
+                            }
+                            else
+                            {
+                                <p>@quiz.QuizQuestions.Count questions</p>
+                            }
+                        </div>
+                        <div class="flip-card-back">
+                            <div style="margin-top: 85px;">
+                                <a style="padding: 10px;" asp-action="StartQuiz" asp-controller="Quiz" asp-route-id="@quiz.Id" title="Start"><i class="icon fas fa-play fa-2x" style="color: white"></i></a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a style="padding: 10px;" asp-action="DeleteQuiz" asp-controller="Quiz" asp-route-id="@quiz.Id" title="Delete"><i class="icon fas fa-trash fa-2x" style="color: white"></i></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+</div>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<UsersRanklistViewModel>
+@{
+    ViewData["Title"] = "Ranklist";
+}
+
+<br />
+<div class="row">
+    <div class="mx-auto">
+        <div class="quizRanklistCard bg-quizLogo text-dark text-center">
+            <h1 class="textRight">Ranklist</h1>
+        </div>
+        @foreach (var user in Model)
+        {
+            <br />
+            <div class="text-center">
+                <div class="quizRanklistCard bg-quizLogo text-dark">
+                    <h3 class="textRight">@user.TotalQuizPoints points</h3>
+                    <h3 class="textLeft">@user.Username </h3>
+                </div>
+            </div>
+        }
+    </div>
+</div>

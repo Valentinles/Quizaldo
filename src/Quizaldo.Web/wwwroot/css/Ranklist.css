@@ -1,0 +1,27 @@
+﻿.quizRanklistCard {
+    font-size: 1.5em;
+    font-weight: 800;
+    height: 4em;
+    width: 24em;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    display: table-cell;
+    vertical-align: middle;
+    letter-spacing: -2px;
+}
+
+.bg-quizLogo {
+    color: #fff;
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.textLeft {
+    text-align: left;
+}

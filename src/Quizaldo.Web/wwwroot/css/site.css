@@ -1,0 +1,95 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.bg-style {
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+}
+
+.customNav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+    .customNav li {
+        display: inline;
+        padding: 10px 10px;
+    }
+
+    .customNav a {
+        display: inline-block;
+        padding: 10px;
+    }
+
+.icon {
+    transition: transform .2s
+}
+
+.icon:hover {
+    text-shadow: 0 0 5px #000;
+    transform: scale(1.5);
+}
+
+
+.card-holder {
+    margin: 3em 0;
+}
+
+.quizLogoCard {
+    font-size: 1.5em;
+    font-weight: 800;
+    height: 4em;
+    width: 64em;
+    padding: 0.5em 1em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    display: table-cell;
+    vertical-align: middle;
+    letter-spacing: -2px;
+}

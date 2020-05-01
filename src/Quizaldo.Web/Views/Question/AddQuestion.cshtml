@@ -1,0 +1,68 @@
+﻿@model AddQuestionBindingModel
+@{
+    ViewData["Title"] = "AddQuestion";
+}
+
+<style>
+    .btn-transparent {
+        background-color: transparent;
+        border: none;
+    }
+</style>
+
+<div class="row">
+    <div class="mx-auto">
+
+        <form id="addQuestionForm" asp-controller="Question" asp-action="AddQuestion" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mx-auto card-holder">
+                <div class="quizCard text-left" style="width: 20em;">
+                    <div class="">
+                        <label asp-for="QuestionName" class="control-label">Question</label>
+                        <input asp-for="QuestionName" class="form-control" />
+                        <span asp-validation-for="QuestionName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="FirstOption">First Option</label>
+                        <input asp-for="FirstOption" class="form-control" />
+                        <span asp-validation-for="FirstOption" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="SecondOption">Second Option</label>
+                        <input asp-for="SecondOption" class="form-control" />
+                        <span asp-validation-for="SecondOption" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="ThirdOption">Third Option</label>
+                        <input asp-for="ThirdOption" class="form-control" />
+                        <span asp-validation-for="ThirdOption" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="FourthOption">Fourth Option</label>
+                        <input asp-for="FourthOption" class="form-control" />
+                        <span asp-validation-for="FourthOption" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <hr />
+                    <br />
+                    <div>
+                        <label asp-for="CorrectAnswer">Correct Answer</label>
+                        <input asp-for="CorrectAnswer" class="form-control" />
+                    </div>
+                    <div>
+                        <label asp-for="CorrectAnswerPoints">Correct Answer Points</label>
+                        <input asp-for="CorrectAnswerPoints" value="1" class="form-control" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="QuizId" class="control-label">Quiz</label>
+                        <select asp-for="QuizId" class="form-control" asp-items="ViewBag.Quizzes">
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-transparent" type="submit"><i class="icon fas fa-plus fa-3x" style="color: white"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
