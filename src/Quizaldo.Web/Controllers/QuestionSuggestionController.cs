@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Quizaldo.Common.ViewModels;
@@ -24,6 +25,7 @@ namespace Quizaldo.Web.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> SuggestQuestion()
         {
@@ -35,6 +37,7 @@ namespace Quizaldo.Web.Controllers
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> SuggestQuestion(SuggestQuestionBindingModel questionSuggestion, string username)
         {
@@ -45,6 +48,7 @@ namespace Quizaldo.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ApproveSuggestedQuestion(int id)
         {
             await this.questionSuggestionService.ApproveSuggestion(id);
