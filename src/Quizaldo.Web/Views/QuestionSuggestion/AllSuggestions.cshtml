@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AllQuestionSuggestionsViewModel>
+
+@{
+    ViewData["Title"] = "AllSuggestions";
+}
+
+@if (Model.Count() == 0)
+{
+    <div class="row">
+        <div class="mx-auto">
+            <div class="mx-auto card-holder">
+                <div class="quizCard text-center" style="width: 20em;">
+                    <p>There are no suggestions for approving.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @foreach (var question in Model)
+    {
+        <div class="col-md-6 mx-auto card-holder">
+            <div class="suggestionsFlip-card">
+                <div class="suggestionsFlip-card-inner">
+                    <div class="suggestionsFlip-card-front">
+                        <h5 class="text-left">Suggestion @question.Id </h5>
+                        <h3 class="text-center">@question.Quiz.Name</h3>
+                        <hr />
+                        <h5>@question.QuestionName</h5>
+                        <div class="">
+                            <h5>Option A: @question.FirstOption</h5>
+                            <h5>Option B: @question.SecondOption</h5>
+                            <h5>Option C: @question.ThirdOption</h5>
+                            <h5>Option D: @question.FourthOption</h5>
+                            <br />
+                            <h4>Correct Answer: @question.CorrectAnswer</h4>
+                        </div>
+                    </div>
+                    <div class="suggestionsFlip-card-back">
+                        <div style="margin-top: 150px;">
+                            <h5>Suggested by @question.User.UserName on @question.SuggestedOn</h5>
+                            <br />
+                            <a style="padding: 10px;" asp-action="ApproveSuggestedQuestion" asp-controller="QuestionSuggestion" asp-route-id="@question.Id" title="Approve"><i class="icon fas fa-check fa-2x" style="color: white"></i></a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a style="padding: 10px;" asp-action="RemoveSuggestedQuestion" asp-controller="QuestionSuggestion" asp-route-id="@question.Id" title="Remove"><i class="icon fas fa-trash fa-2x" style="color: white"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
