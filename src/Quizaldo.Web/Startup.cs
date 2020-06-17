@@ -52,6 +52,7 @@ namespace Quizaldo.Web
             services.AddScoped<IQuestionService, QuestionService>();
             services.AddScoped<IUserResultService, UserResultService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IQuestionSuggestionService, QuestionSuggestionService>();
 
 
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
