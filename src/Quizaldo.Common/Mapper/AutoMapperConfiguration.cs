@@ -21,6 +21,9 @@ namespace Quizaldo.Common.Mapper
             this.CreateMap<QuizaldoUser, UsersRanklistViewModel>().ReverseMap();
             this.CreateMap<QuizServiceModel, QuizViewModel>().ReverseMap();
             this.CreateMap<AnswersServiceModel, AnswersBindingModel>().ReverseMap();
+            this.CreateMap<QuestionSuggestion, SuggestQuestionBindingModel>().ReverseMap();
+            this.CreateMap<QuestionSuggestion, AllQuestionSuggestionsViewModel>().ReverseMap();
+            this.CreateMap<Question, QuestionSuggestion>().ReverseMap().ForMember(x => x.Id, opt => opt.Ignore());
         }
     }
 }
