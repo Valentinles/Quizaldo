@@ -23,6 +23,11 @@ namespace Quizaldo.Services.Implementations
         {
             var user = await this.context.Users.FirstOrDefaultAsync(u => u.UserName == username);
 
+            if (user == null)
+            {
+                return;
+            }
+
             questionSuggestion.User = user;
             questionSuggestion.SuggestedOn = DateTime.Now;
 
