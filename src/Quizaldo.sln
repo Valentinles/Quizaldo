@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quizaldo.Common", "Quizaldo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quizaldo.Services", "Quizaldo.Services\Quizaldo.Services.csproj", "{6C3401ED-32BC-4ECD-BB20-AD3DFA6F011B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizaldo.Tests", "Quizaldo.Tests\Quizaldo.Tests.csproj", "{3448CA9F-293B-4409-9B20-6DE5203B4EDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizaldo.Tests", "Quizaldo.Tests\Quizaldo.Tests.csproj", "{AD6E2868-AE32-46E8-BF24-A3E45C435893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{6C3401ED-32BC-4ECD-BB20-AD3DFA6F011B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C3401ED-32BC-4ECD-BB20-AD3DFA6F011B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C3401ED-32BC-4ECD-BB20-AD3DFA6F011B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3448CA9F-293B-4409-9B20-6DE5203B4EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3448CA9F-293B-4409-9B20-6DE5203B4EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3448CA9F-293B-4409-9B20-6DE5203B4EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3448CA9F-293B-4409-9B20-6DE5203B4EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD6E2868-AE32-46E8-BF24-A3E45C435893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6E2868-AE32-46E8-BF24-A3E45C435893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD6E2868-AE32-46E8-BF24-A3E45C435893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD6E2868-AE32-46E8-BF24-A3E45C435893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
