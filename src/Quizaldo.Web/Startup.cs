@@ -18,6 +18,7 @@ using AutoMapper;
 using Quizaldo.Services.Implementations;
 using Quizaldo.Services.Interfaces;
 using Quizaldo.Common;
+using ReflectionIT.Mvc.Paging;
 
 namespace Quizaldo.Web
 {
@@ -56,7 +57,9 @@ namespace Quizaldo.Web
 
 
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
-
+            services.AddPaging(options => {
+                options.ViewName = "Bootstrap4";
+            });
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

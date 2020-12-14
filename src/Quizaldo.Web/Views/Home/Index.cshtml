@@ -1,4 +1,6 @@
-﻿@model IEnumerable<AllQuizzesViewModel>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<AllQuizzesViewModel>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -50,6 +52,12 @@
                 </div>
             </div>
         }
-
     }
 </div>
+<div>
+    <nav>
+        @Html.Partial("PagerOptions", this.Model)
+    </nav>
+</div>
+
+

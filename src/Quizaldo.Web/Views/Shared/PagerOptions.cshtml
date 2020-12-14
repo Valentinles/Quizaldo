@@ -1,0 +1,54 @@
+﻿@model ReflectionIT.Mvc.Paging.IPagingList
+@* Boostrap 4 based pager *@
+
+@{
+    var start = this.Model.StartPageIndex;
+    var stop = this.Model.StopPageIndex;
+}
+<style>
+    .icon:hover {
+        text-shadow: 0 0 5px #000;
+        transform: scale(1.5);
+    }   
+</style>
+@if (this.Model.PageCount > 1)
+{
+    <ul class="pagination pagination-lg justify-content-center">
+
+
+        @if (this.Model.PageIndex == 1)
+        {
+            <li class="page-item disabled card-holder">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                    <i class="icon fa fa-chevron-left" style="color: white" aria-hidden="true"></i>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item card-holder">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                    <i class="icon fa fa-chevron-left" style="color: white" aria-hidden="true"></i>
+                </a>
+            </li>
+        }
+
+        @if (this.Model.PageIndex == this.Model.PageCount)
+        {
+
+            <li class="page-item disabled card-holder">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                    <i class="icon fa fa-chevron-right" style="color: white" aria-hidden="true"></i>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item card-holder">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                    <i class="icon fa fa-chevron-right" style="color: white" aria-hidden="true"></i>
+                </a>
+            </li>
+        }
+    </ul>
+}

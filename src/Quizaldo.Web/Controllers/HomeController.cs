@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Quizaldo.Common.ViewModels;
 using Quizaldo.Services.Interfaces;
 using Quizaldo.Web.Models;
+using ReflectionIT.Mvc.Paging;
 
 namespace Quizaldo.Web.Controllers
 {
@@ -25,12 +26,14 @@ namespace Quizaldo.Web.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             var quizzes = (await this.quizService.AllQuizzes())
                 .Select(mapper.Map<AllQuizzesViewModel>);
 
-            return this.View(quizzes);
+            var pagedQuizzes = PagingList.Create(quizzes, 8, page);
+
+            return this.View(pagedQuizzes);
         }
 
         public IActionResult Privacy()
