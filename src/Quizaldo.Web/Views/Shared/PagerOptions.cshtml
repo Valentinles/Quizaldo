@@ -19,7 +19,7 @@
         @if (this.Model.PageIndex == 1)
         {
             <li class="page-item disabled card-holder">
-                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-color: transparent">
                     <i class="icon fa fa-chevron-left" style="color: white" aria-hidden="true"></i>
                 </a>
             </li>
@@ -27,7 +27,7 @@
         else
         {
             <li class="page-item card-holder">
-                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex - 1))" aria-label="Previous" class="page-link" style="background-color: transparent">
                     <i class="icon fa fa-chevron-left" style="color: white" aria-hidden="true"></i>
                 </a>
             </li>
@@ -37,7 +37,7 @@
         {
 
             <li class="page-item disabled card-holder">
-                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-color: transparent;">
                     <i class="icon fa fa-chevron-right" style="color: white" aria-hidden="true"></i>
                 </a>
             </li>
@@ -45,7 +45,7 @@
         else
         {
             <li class="page-item card-holder">
-                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);">
+                <a href="@Url.Action(Model.Action, Model.GetRouteValueForPage(this.Model.PageIndex + 1))" aria-label="Next" class="page-link" style="background-color: transparent">
                     <i class="icon fa fa-chevron-right" style="color: white" aria-hidden="true"></i>
                 </a>
             </li>
