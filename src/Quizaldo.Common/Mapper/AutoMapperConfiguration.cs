@@ -15,6 +15,7 @@ namespace Quizaldo.Common.Mapper
             this.CreateMap<Quiz, CreateQuizBindingModel>().ReverseMap();
             this.CreateMap<Quiz, QuizViewModel>().ReverseMap();
             this.CreateMap<Quiz, AllQuizzesViewModel>().ReverseMap();
+            this.CreateMap<Quiz, SearchResultsViewModel>().ReverseMap();
             this.CreateMap<Question, QuestionViewModel>().ReverseMap();
             this.CreateMap<Question, AddQuestionBindingModel>().ReverseMap();
             this.CreateMap<UserResult, UserResultViewModel>().ReverseMap();
