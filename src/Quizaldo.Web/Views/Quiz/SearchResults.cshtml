@@ -1,0 +1,39 @@
+﻿@model SearchResultsViewModel
+<br />
+<h1 style="font-size: 2.5em; font-weight: 800;">
+    <i class="icon fa fa-search" style="color: white;" aria-hidden="true">
+    </i> Results with <em style="color: red">@Model.SearchTerm</em>:
+</h1>
+
+@foreach (var quiz in Model.Quizzes)
+{
+    <div class="container">
+        <div class="col align-self-center card-holder">
+            <div class="serachResultBox bg-style">
+                <div class="d-flex">
+                    <div class="p-2">
+                        <img class="equalImg" src="@quiz.QuizLogoUrl" alt="No Image" width="200">
+                    </div>
+                    <div class="ml-auto p-2">
+                        <a style="padding: 10px;" asp-action="StartQuiz" asp-controller="Quiz" asp-route-id="@quiz.Id" title="Start"><i class="icon fas fa-play fa-2x" style="color: white"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@quiz.Name Quiz</h5>
+                    @if (@quiz.QuizQuestions.Count == 0)
+                    {
+                        <p>This quiz has no questions.</p>
+                    }
+                    else if (@quiz.QuizQuestions.Count == 1)
+                    {
+                        <p>The quiz contains @quiz.QuizQuestions.Count question.</p>
+                    }
+                    else
+                    {
+                        <p>The quiz contains @quiz.QuizQuestions.Count questions.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -80,5 +80,21 @@ namespace Quizaldo.Web.Controllers
             return RedirectToAction("Result", "UserResult", new { id=quiz.Result.Id });
         }
 
+        public async Task<IActionResult> SearchResults(string searchTerm)
+        {
+            if (searchTerm == null)
+            {
+                return NotFound();
+            }
+
+            var foundQuizzes = await this.quizService.GetSearchingResults(searchTerm);
+
+            var result = new SearchResultsViewModel();
+            result.SearchTerm = searchTerm;
+            result.Quizzes = foundQuizzes;
+
+            return this.View(result);
+        }
+
     }
 }

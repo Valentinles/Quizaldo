@@ -104,5 +104,15 @@ namespace Quizaldo.Services.Implementations
             await this.context.UserResults.AddAsync(model.Result);
             await this.context.SaveChangesAsync();
         }
+
+        public async Task<List<Quiz>> GetSearchingResults(string searchTerm)
+        {
+            return await this.context.Quizzes
+                .Where(q => q.Name.Contains(searchTerm))
+                .Include(q => q.QuizQuestions)
+                .OrderByDescending(q => q.Name)
+                .ThenByDescending(q => q.QuizQuestions.Count())
+                .ToListAsync();
+        }
     }
 }

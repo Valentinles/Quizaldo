@@ -20,5 +20,7 @@ namespace Quizaldo.Services.Interfaces
         Task<Quiz> GetQuizById(int id);
 
         Task StartQuiz(QuizServiceModel model, string username);
+
+        Task<List<Quiz>> GetSearchingResults(string searchTerm);
     }
 }
