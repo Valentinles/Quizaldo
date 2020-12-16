@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AllJokesViewModel>
+
+@{
+    ViewData["Title"] = "Jokes";
+}
+    <h1 style="font-size: 2.5em; font-weight: 800;">
+        <i class="icon fas fa-grin-squint-tears" style="color: white;" aria-hidden="true">
+        </i> Jokes
+    </h1>
+@if (Model.Count() == 0)
+{
+    <div class="mx-auto card-holder">
+        <div class="quizCard text-center" style="width: 20em;">
+            <p>No jokes yet.</p>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Joke" asp-action="AddJoke" title="Create Quiz"><i class="icon fas fa-plus-square fa-2x" style="color: white"></i></a>
+        </div>
+    </div>
+}
+else
+{
+    @foreach (var joke in Model)
+    {
+        <div class="container">
+            <div class="col align-self-center card-holder">
+                <div class="serachResultBox bg-style">
+                    <div class="d-flex">
+                        <div class="p-2">
+                            <p><i class="icon fas fa-grin-squint-tears" style="color: white"></i> @joke.PositiveVotes</p>
+                            <p><i class="icon fas fa-frown" style="color: white"></i> @joke.NegativeVotes</p>
+                        </div>
+                        <div class="ml-auto p-2">
+                            <a style="padding: 10px;" asp-action="UpvoteJoke" asp-controller="Joke" asp-route-id="@joke.Id" title="Upvote"><i class="icon fas fa-thumbs-up" style="color: white"></i></a>
+                            <a style="padding: 10px;" asp-action="DownvoteJoke" asp-controller="Joke" asp-route-id="@joke.Id" title="DownVote"><i class="icon fas fa-thumbs-down" style="color: white"></i></a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a style="padding: 10px;" asp-action="DeleteJoke" asp-controller="Joke" asp-route-id="@joke.Id" title="Delete"><i class="icon fas fa-trash" style="color: white"></i></a>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@joke.JokeContent</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

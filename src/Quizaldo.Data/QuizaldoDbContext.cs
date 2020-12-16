@@ -23,5 +23,7 @@ namespace Quizaldo.Data
         public DbSet<UserResult> UserResults { get; set; }
 
         public DbSet<QuestionSuggestion> QuestionSuggestions { get; set; }
+
+        public DbSet<Joke> Jokes { get; set; }
     }
 }

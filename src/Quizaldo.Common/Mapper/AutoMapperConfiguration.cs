@@ -25,6 +25,10 @@ namespace Quizaldo.Common.Mapper
             this.CreateMap<QuestionSuggestion, SuggestQuestionBindingModel>().ReverseMap();
             this.CreateMap<QuestionSuggestion, AllQuestionSuggestionsViewModel>().ReverseMap();
             this.CreateMap<Question, QuestionSuggestion>().ReverseMap().ForMember(x => x.Id, opt => opt.Ignore());
+            this.CreateMap<Joke, AddJokeBindingModel>().ReverseMap()
+                .ForMember(x => x.PositiveVotes, opt => opt.Ignore())
+                .ForMember(x=>x.NegativeVotes, opt=>opt.Ignore());
+            this.CreateMap<Joke, AllJokesViewModel>().ReverseMap();
         }
     }
 }

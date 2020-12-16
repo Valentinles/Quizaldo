@@ -12,5 +12,7 @@ namespace Quizaldo.Models
         public string Name { get; set; }
 
         public int TotalQuizPoints { get; set; }
+
+        public List<Joke> VotedJokes { get; set; } = new List<Joke>();
     }
 }
