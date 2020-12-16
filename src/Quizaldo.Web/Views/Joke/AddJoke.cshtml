@@ -1,0 +1,33 @@
+﻿@model AddJokeBindingModel
+
+@{
+    ViewData["Title"] = "Add Joke";
+}
+
+<style>
+    .btn-transparent {
+        background-color: transparent;
+        border: none;
+    }
+</style>
+
+<div class="row">
+    <div class="mx-auto">
+        <form id="createQuizForm" asp-controller="Joke" asp-action="AddJoke" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mx-auto card-holder">
+                <div class="quizCard text-left" style="width: 20em;">
+                    <div class="form-group">
+                        <label asp-for="JokeContent" class="control-label">Add Joke</label>
+                        <textarea asp-for="JokeContent" class="form-control" style="height:300px;"></textarea>
+                        <span asp-validation-for="JokeContent" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <button class="btn btn-transparent" type="submit"><i class="icon fas fa-plus fa-3x" style="color: white"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

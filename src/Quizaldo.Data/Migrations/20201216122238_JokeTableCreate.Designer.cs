@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Quizaldo.Data;
 
 namespace Quizaldo.Data.Migrations
 {
     [DbContext(typeof(QuizaldoDbContext))]
-    partial class QuizaldoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201216122238_JokeTableCreate")]
+    partial class JokeTableCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,12 +168,7 @@ namespace Quizaldo.Data.Migrations
                     b.Property<int>("PositiveVotes")
                         .HasColumnType("int");
 
-                    b.Property<string>("QuizaldoUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("QuizaldoUserId");
 
                     b.ToTable("Jokes");
                 });
@@ -429,13 +426,6 @@ namespace Quizaldo.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Quizaldo.Models.Joke", b =>
-                {
-                    b.HasOne("Quizaldo.Models.QuizaldoUser", null)
-                        .WithMany("VotedJokes")
-                        .HasForeignKey("QuizaldoUserId");
                 });
 
             modelBuilder.Entity("Quizaldo.Models.Question", b =>
