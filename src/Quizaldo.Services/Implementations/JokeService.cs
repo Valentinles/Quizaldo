@@ -26,6 +26,11 @@ namespace Quizaldo.Services.Implementations
         {
             var joke = await this.context.Jokes.FirstOrDefaultAsync(j => j.Id == id);
 
+            if (joke == null)
+            {
+                return;
+            }
+
             this.context.Jokes.Remove(joke);
             await this.context.SaveChangesAsync();
         }
@@ -34,6 +39,11 @@ namespace Quizaldo.Services.Implementations
         {
             var joke = await this.context.Jokes.FirstOrDefaultAsync(j => j.Id == id);
             var user = await this.context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(username));
+
+            if (joke == null || user == null)
+            {
+                return;
+            }
             if (user.VotedJokes.Contains(joke))
             {
                 return;
@@ -52,6 +62,11 @@ namespace Quizaldo.Services.Implementations
         {
             var joke = await this.context.Jokes.FirstOrDefaultAsync(j => j.Id == id);
             var user = await this.context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(username));
+
+            if (joke == null || user == null)
+            {
+                return;
+            }
 
             if (user.VotedJokes.Contains(joke))
             {
