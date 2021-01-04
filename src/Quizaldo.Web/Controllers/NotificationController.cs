@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quizaldo.Common.ViewModels;
 using Quizaldo.Services.Interfaces;
@@ -19,6 +20,8 @@ namespace Quizaldo.Web.Controllers
             this.notificationService = notificationService;
             this.mapper = mapper;
         }
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RecentNotifications()
         {
             var notifications = (await this.notificationService.GetRecentNotifications())
@@ -27,6 +30,7 @@ namespace Quizaldo.Web.Controllers
             return this.View(notifications);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllNotifications()
         {
             var notifications = (await this.notificationService.GetAllNotifications())
