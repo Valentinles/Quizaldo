@@ -14,9 +14,11 @@ namespace Quizaldo.Services.Implementations
     public class QuestionSuggestionService : DataService, IQuestionSuggestionService
     {
         private readonly IMapper mapper;
-        public QuestionSuggestionService(QuizaldoDbContext context, IMapper mapper) : base(context)
+        private readonly INotificationService notificationService;
+        public QuestionSuggestionService(QuizaldoDbContext context, IMapper mapper, INotificationService notificationService) : base(context)
         {
             this.mapper = mapper;
+            this.notificationService = notificationService;
         }
 
         public async Task SuggestQuestion(QuestionSuggestion questionSuggestion, string username)
@@ -42,6 +44,8 @@ namespace Quizaldo.Services.Implementations
             {
                 return;
             }
+
+            await this.notificationService.CreateQuestionSuggestionNotification(user, questionSuggestion);
 
             await this.context.SaveChangesAsync();
         }

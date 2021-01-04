@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Quizaldo.Data;
 
 namespace Quizaldo.Data.Migrations
 {
     [DbContext(typeof(QuizaldoDbContext))]
-    partial class QuizaldoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210104100831_NotificationSchemaCreate")]
+    partial class NotificationSchemaCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,15 +188,15 @@ namespace Quizaldo.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("QuizaldoUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("QuizaldoUserId");
 
                     b.ToTable("Notifications");
                 });
@@ -463,9 +465,9 @@ namespace Quizaldo.Data.Migrations
 
             modelBuilder.Entity("Quizaldo.Models.Notification", b =>
                 {
-                    b.HasOne("Quizaldo.Models.QuizaldoUser", "User")
+                    b.HasOne("Quizaldo.Models.QuizaldoUser", null)
                         .WithMany("Notifications")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("QuizaldoUserId");
                 });
 
             modelBuilder.Entity("Quizaldo.Models.Question", b =>
