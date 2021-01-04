@@ -29,6 +29,7 @@ namespace Quizaldo.Common.Mapper
                 .ForMember(x => x.PositiveVotes, opt => opt.Ignore())
                 .ForMember(x=>x.NegativeVotes, opt=>opt.Ignore());
             this.CreateMap<Joke, AllJokesViewModel>().ReverseMap();
+            this.CreateMap<Notification, NotificationListingViewModel>().ReverseMap();
         }
     }
 }

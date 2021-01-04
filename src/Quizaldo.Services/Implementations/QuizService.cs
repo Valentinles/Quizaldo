@@ -17,10 +17,12 @@ namespace Quizaldo.Services.Implementations
     public class QuizService : DataService, IQuizService
     {
         private readonly IMapper mapper;
+        private readonly INotificationService notificationService;
 
-        public QuizService(QuizaldoDbContext context, IMapper mapper) : base(context)
+        public QuizService(QuizaldoDbContext context, IMapper mapper, INotificationService notificationService) : base(context)
         {
             this.mapper = mapper;
+            this.notificationService = notificationService;
         }
 
         public async Task CreateQuiz(Quiz quiz)
@@ -100,6 +102,8 @@ namespace Quizaldo.Services.Implementations
             model.Result.PointsEarned = model.Result.UsersCorrectAnswers;
 
             user.TotalQuizPoints += model.Result.PointsEarned;
+
+            await this.notificationService.CreateQuizNotification(quiz, user, model);
 
             await this.context.UserResults.AddAsync(model.Result);
             await this.context.SaveChangesAsync();
