@@ -4,6 +4,7 @@ using Quizaldo.Common.Mapper;
 using Quizaldo.Data;
 using Quizaldo.Models;
 using Quizaldo.Services.Implementations;
+using Quizaldo.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Quizaldo.Tests.Service
     public class QuestionSuggestionServiceTests
     {
         private readonly IMapper mapper;
+        private readonly INotificationService notificationService;
 
         [Theory]
         [InlineData("testUser")]
@@ -29,7 +31,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             var question = GetTestQuestionSuggestion();
 
@@ -50,7 +52,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             var question = GetTestQuestionSuggestion();
 
@@ -71,7 +73,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             var question = GetTestQuestionSuggestion();
 
@@ -101,7 +103,7 @@ namespace Quizaldo.Tests.Service
 
             var mapper = config.CreateMapper();
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             SeedTestQuestionSuggestion(context);
 
@@ -127,7 +129,7 @@ namespace Quizaldo.Tests.Service
 
             var mapper = config.CreateMapper();
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             SeedTestQuestionSuggestion(context);
 
@@ -146,7 +148,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             SeedTestQuestionSuggestion(context);
 
@@ -165,7 +167,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             SeedTestQuestionSuggestion(context);
 
@@ -183,7 +185,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             SeedTestQuestionSuggestion(context);
 
@@ -201,7 +203,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var questionSuggestionService = new QuestionSuggestionService(context, mapper);
+            var questionSuggestionService = new QuestionSuggestionService(context, mapper, notificationService);
 
             var result = await questionSuggestionService.GetAllSuggestions();
 
