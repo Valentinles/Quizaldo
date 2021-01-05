@@ -1,20 +1,21 @@
 ﻿@model IEnumerable<UsersRanklistViewModel>
 @{
-    ViewData["Title"] = "Ranklist";
+    ViewData["Title"] = "Ranking";
 }
 
 <br />
 <div class="row">
     <div class="mx-auto">
         <div class="quizRanklistCard bg-quizLogo text-dark text-center">
-            <h1 class="textRight">Ranklist</h1>
+            <h1 class="textRight">Ranking</h1>
         </div>
         @foreach (var user in Model)
         {
             <br />
             <div class="text-center">
                 <div class="quizRanklistCard bg-quizLogo text-dark">
-                    <h3 class="textRight">@user.TotalQuizPoints points</h3>
+                    <h3 class="textRight">@user.TotalQuizPoints <i class="icon fas fas fa-puzzle-piece" style="color: white;" title="Quiz points"></i></h3>
+                    <h3 class="textRight">@user.TotalAchievementPoints <i class="icon fas fa-star" style="color: white" title="Achievement points"></i></h3>
                     <h3 class="textLeft">@user.Username </h3>
                 </div>
             </div>

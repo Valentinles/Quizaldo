@@ -56,6 +56,7 @@ namespace Quizaldo.Web
             services.AddScoped<IQuestionSuggestionService, QuestionSuggestionService>();
             services.AddScoped<IJokeService, JokeService>();
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<IAchievementService, AchievementService>();
 
 
             services.AddAutoMapper(typeof(AutoMapperConfiguration));

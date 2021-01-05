@@ -18,6 +18,7 @@ namespace Quizaldo.Tests.Service
     {
         private readonly IMapper mapper;
         private readonly INotificationService notificationService;
+        private readonly IAchievementService achievementService;
 
         [Fact]
         public async Task CreateQuiz_WithCorrectInputData_ShouldCreateQuiz()
@@ -28,7 +29,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             var quiz = GetTestQuiz();
 
@@ -46,7 +47,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             var quiz = GetTestQuiz();
             quiz.Id = 0;
@@ -66,7 +67,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             SeedTestQuiz(context);
 
@@ -85,7 +86,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             SeedTestQuiz(context);
 
@@ -103,7 +104,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             SeedTestQuiz(context);
 
@@ -121,7 +122,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             var result = await quizService.AllQuizzes();
 
@@ -138,7 +139,7 @@ namespace Quizaldo.Tests.Service
 
             var context = new QuizaldoDbContext(options);
 
-            var quizService = new QuizService(context, mapper, notificationService);
+            var quizService = new QuizService(context, mapper, notificationService, achievementService);
 
             SeedTestQuiz(context);
 

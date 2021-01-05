@@ -18,11 +18,14 @@ namespace Quizaldo.Services.Implementations
     {
         private readonly IMapper mapper;
         private readonly INotificationService notificationService;
+        private readonly IAchievementService achievementService;
 
-        public QuizService(QuizaldoDbContext context, IMapper mapper, INotificationService notificationService) : base(context)
+        public QuizService(QuizaldoDbContext context, IMapper mapper, INotificationService notificationService,
+            IAchievementService achievementService) : base(context)
         {
             this.mapper = mapper;
             this.notificationService = notificationService;
+            this.achievementService = achievementService;
         }
 
         public async Task CreateQuiz(Quiz quiz)
@@ -100,13 +103,17 @@ namespace Quizaldo.Services.Implementations
             }
 
             model.Result.PointsEarned = model.Result.UsersCorrectAnswers;
-
             user.TotalQuizPoints += model.Result.PointsEarned;
 
-            await this.notificationService.CreateQuizNotification(quiz, user, model);
-
             await this.context.UserResults.AddAsync(model.Result);
+            //if user meets the requirements of any achievement he`ll get the achievement after finishes the quiz
+            await this.achievementService.GetRookieAchievement(user);
+            await this.achievementService.GetHundrederAchievement(user);
+            await this.achievementService.GetExcellentAchievement(user);
+            await this.achievementService.GetMasterAchievement(user);
+
             await this.context.SaveChangesAsync();
+            await this.notificationService.CreateQuizNotification(quiz, user, model);
         }
 
         public async Task<List<Quiz>> GetSearchingResults(string searchTerm)

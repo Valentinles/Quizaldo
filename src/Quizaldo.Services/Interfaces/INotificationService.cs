@@ -13,6 +13,8 @@ namespace Quizaldo.Services.Interfaces
 
         Task CreateQuizNotification(Quiz quiz, QuizaldoUser user, QuizServiceModel model);
 
+        Task CreateAchievementNotification(QuizaldoUser user, Achievement achievement);
+
         Task<IEnumerable<Notification>> GetRecentNotifications();
 
         Task<IEnumerable<Notification>> GetAllNotifications();

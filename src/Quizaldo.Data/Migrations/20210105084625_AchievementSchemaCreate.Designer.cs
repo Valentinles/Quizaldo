@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Quizaldo.Data;
 
 namespace Quizaldo.Data.Migrations
 {
     [DbContext(typeof(QuizaldoDbContext))]
-    partial class QuizaldoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210105084625_AchievementSchemaCreate")]
+    partial class AchievementSchemaCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,40 +174,6 @@ namespace Quizaldo.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Achievements");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            LogoUrl = "https://i.pinimg.com/originals/a5/69/36/a56936857e3b5ee42eb7f18ceb50adb4.png",
-                            Name = "Rookie",
-                            Points = 5,
-                            Requirement = "Complete your first quiz."
-                        },
-                        new
-                        {
-                            Id = 2,
-                            LogoUrl = "https://webstockreview.net/images/100-clipart-emoji-10.png",
-                            Name = "Hundreder",
-                            Points = 100,
-                            Requirement = "Get 100 points from quizzes."
-                        },
-                        new
-                        {
-                            Id = 3,
-                            LogoUrl = "https://images.vexels.com/media/users/3/207946/isolated/preview/7c504bb059892ea84bd18a76023ba52b-thumb-up-cartoon-hand-by-vexels.png",
-                            Name = "Excellent",
-                            Points = 75,
-                            Requirement = "Complete a quiz without any mistakes."
-                        },
-                        new
-                        {
-                            Id = 4,
-                            LogoUrl = "https://pngimage.net/wp-content/uploads/2018/06/master-ball-png-4.png",
-                            Name = "Master",
-                            Points = 180,
-                            Requirement = "Earn all previous achievements."
-                        });
                 });
 
             modelBuilder.Entity("Quizaldo.Models.Joke", b =>
@@ -406,9 +374,6 @@ namespace Quizaldo.Data.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalAchievementPoints")
-                        .HasColumnType("int");
 
                     b.Property<int>("TotalQuizPoints")
                         .HasColumnType("int");

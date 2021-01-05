@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Quizaldo.Data;
 
 namespace Quizaldo.Data.Migrations
 {
     [DbContext(typeof(QuizaldoDbContext))]
-    partial class QuizaldoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210105110501_AchievementSeed")]
+    partial class AchievementSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -406,9 +408,6 @@ namespace Quizaldo.Data.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalAchievementPoints")
-                        .HasColumnType("int");
 
                     b.Property<int>("TotalQuizPoints")
                         .HasColumnType("int");

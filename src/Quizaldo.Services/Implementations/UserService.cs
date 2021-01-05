@@ -20,6 +20,7 @@ namespace Quizaldo.Services.Implementations
         {
             var users = await this.context.Users
                 .OrderByDescending(u => u.TotalQuizPoints)
+                .ThenByDescending(u=>u.TotalAchievementPoints)
                 .ToListAsync();
 
             return users;
