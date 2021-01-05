@@ -45,6 +45,18 @@ namespace Quizaldo.Services.Implementations
             await this.context.SaveChangesAsync();
         }
 
+        public async Task CreateAchievementNotification(QuizaldoUser user, Achievement achievement)
+        {
+            var notification = new Notification();
+            notification.Text = $"{user.UserName} has completed {achievement.Name} achievement ";
+            notification.CreatedOn = DateTime.Now;
+            notification.UserId = user.Id;
+            notification.User = user;
+
+            await this.context.Notifications.AddAsync(notification);
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Notification>> GetRecentNotifications()
         {
             return await this.context.Notifications

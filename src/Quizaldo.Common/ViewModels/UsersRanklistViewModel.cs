@@ -10,5 +10,7 @@ namespace Quizaldo.Common.ViewModels
         public string Username { get; set; }
 
         public int TotalQuizPoints { get; set; }
+
+        public int TotalAchievementPoints { get; set; }
     }
 }

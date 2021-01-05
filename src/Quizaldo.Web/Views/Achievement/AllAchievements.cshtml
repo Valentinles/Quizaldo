@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AllAchievementsViewModel>
+
+@{
+    ViewData["Title"] = "Achievements";
+}
+<h1 style="font-size: 2.5em; font-weight: 800;">
+    <i class="icon fas fa-star" style="color: white;" aria-hidden="true">
+    </i> Achievements
+</h1>
+
+@foreach (var achievement in Model)
+{
+    <div class="container">
+        <div class="col align-self-center card-holder">
+            <div class="serachResultBox bg-style">
+                <div class="d-flex">
+                    <div class="p-2">
+                        <p>@achievement.Name</p>
+                    </div>
+                    <div class="ml-auto p-2">
+                        <img src="@achievement.LogoUrl" alt="Alternate Text" width="65" />
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">@achievement.Requirement</h4>
+                    <h6>Reward: @achievement.Points points</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+}

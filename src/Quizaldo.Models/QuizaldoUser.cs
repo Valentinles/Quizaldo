@@ -13,8 +13,12 @@ namespace Quizaldo.Models
 
         public int TotalQuizPoints { get; set; }
 
+        public int TotalAchievementPoints { get; set; }
+
         public List<Joke> VotedJokes { get; set; } = new List<Joke>();
 
         public List<Notification> Notifications { get; set; } = new List<Notification>();
+
+        public List<UserAchievement> UserAchievements { get; set; } = new List<UserAchievement>();
     }
 }
