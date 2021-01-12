@@ -43,5 +43,13 @@ namespace Quizaldo.Web.Controllers
 
             return View(userResult);
         }
+
+        public async Task<IActionResult> MyResults(string username)
+        {
+            var userResults = (await this.userResultService.GetAllUserResultsByUser(this.User.Identity.Name))
+                .Select(mapper.Map<UserResultViewModel>);
+
+            return this.View(userResults);
+        }
     }
 }
