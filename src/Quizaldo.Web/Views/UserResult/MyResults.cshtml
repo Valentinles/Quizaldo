@@ -1,0 +1,46 @@
+﻿@model IEnumerable<UserResultViewModel>
+@{
+    ViewData["Title"] = "My Results";
+}
+
+@{
+    int totalEarnedPoints = 0;
+    int totalQuizFinished = 0;
+}
+
+@foreach (var result in Model)
+{
+    totalEarnedPoints += result.PointsEarned;
+    totalQuizFinished++;
+
+}
+
+
+<h1 style="font-size: 2.5em; font-weight: 800;">
+    <i class="icon fas fa-poll" style="color: white;" aria-hidden="true">
+    </i> @this.User.Identity.Name's Results
+</h1>
+<div class="text-center">
+    <h3 style="font-size: 2.5em; font-weight: 800;">
+        <i class="icon fas fa-puzzle-piece" style="color: white;" aria-hidden="true">
+        </i> @totalQuizFinished quizzes
+    </h3>
+    <h3 style="font-size: 2.5em; font-weight: 800;">
+        <i class="icon fas fa-check-double" style="color: white;" aria-hidden="true">
+        </i> @totalEarnedPoints points
+    </h3>
+</div>
+
+<div class="row mx-auto">
+    @foreach (var result in Model)
+    {
+        <div class="mx-auto card-holder">
+            <div class="quizCard text-left" style="width: 18em;">
+                <p><i class="icon fas fa-puzzle-piece fa-1x" style="color: white; margin-right:20px; "></i> @result.Quiz.Name Quiz</p>
+                <p><i class="icon fas fa-check-circle fa-1x" style="color: white; margin-right:20px;"></i> @result.UsersCorrectAnswers Correct</p>
+                <p><i class="icon fas fa-times-circle fa-1x" style="color: white; margin-right:20px;"></i> @result.UsersWrongAnswers Wrong</p>
+                <p><i class="icon fas fa-check-double fa-1x" style="color: white; margin-right:20px;"></i> @result.PointsEarned Points earned</p>
+            </div>
+        </div>
+    }
+</div>
