@@ -36,7 +36,7 @@ namespace Quizaldo.Services.Implementations
 
         public async Task DeleteQuiz(int id)
         {
-            var quiz = await this.context.Quizzes.Include(q=>q.QuizQuestions).FirstOrDefaultAsync(q => q.Id == id);
+            var quiz = await this.context.Quizzes.Include(q => q.QuizQuestions).FirstOrDefaultAsync(q => q.Id == id);
 
             if (quiz == null)
             {
@@ -46,12 +46,12 @@ namespace Quizaldo.Services.Implementations
             this.context.Quizzes.Remove(quiz);
             this.context.Questions.RemoveRange(quiz.QuizQuestions);
             await this.context.SaveChangesAsync();
-            
+
         }
 
         public async Task<IEnumerable<Quiz>> AllQuizzes()
         {
-            var quizzes = await this.context.Quizzes.Include(q=>q.QuizQuestions).ToListAsync();
+            var quizzes = await this.context.Quizzes.Include(q => q.QuizQuestions).ToListAsync();
 
             return quizzes;
         }
@@ -84,22 +84,11 @@ namespace Quizaldo.Services.Implementations
 
             for (int i = 0; i < quiz.QuizQuestions.Count; i++)
             {
-                for (int a = 0; a < model.Answers.Count; a++)
-                {
-                    if (quiz.QuizQuestions[i].Id == model.Answers[a].QuestionId)
-                    {
-                        if (model.Answers[a].Answer == quiz.QuizQuestions[i].CorrectAnswer)
-                        {
-                            model.Result.UsersCorrectAnswers++;
+                var questionId = quiz.QuizQuestions[i].Id;
+                var correctAnswer = quiz.QuizQuestions[i].CorrectAnswer;
+                var currentAnswer = model.Answers.FirstOrDefault(x => x.QuestionId == questionId).Answer;
 
-                        }
-                        else
-                        {
-                            model.Result.UsersWrongAnswers++;
-                        }
-                    }
-                    i++;
-                }
+                var result = currentAnswer == correctAnswer ? model.Result.UsersCorrectAnswers++ : model.Result.UsersWrongAnswers++;
             }
 
             model.Result.PointsEarned = model.Result.UsersCorrectAnswers;
