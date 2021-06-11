@@ -29,8 +29,8 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <img class="equalImg" src="@quiz.QuizLogoUrl" />
-                            <h5>Quiz </h5>
                             <h4>@quiz.Name </h4>
+                            <h5>@quiz.Category </h5>
                             @if (@quiz.QuizQuestions.Count == 0)
                             {
                                 <p>No questions yet</p>
