@@ -1,4 +1,5 @@
 ﻿@model CreateQuizBindingModel
+@using Quizaldo.Models.Enums
 
 @{
     ViewData["Title"] = "CreateQuiz";
@@ -22,6 +23,13 @@
                         <label asp-for="Name" class="control-label">Quiz Name</label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Category">Category</label>
+                        <select class="custom-select" asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()">
+                            <option selected="selected" value="">Select category</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
                     </div>
                     <div>
                         <label asp-for="QuizLogoUrl">Logo (url)</label>
