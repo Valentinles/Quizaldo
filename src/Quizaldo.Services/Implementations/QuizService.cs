@@ -58,7 +58,9 @@ namespace Quizaldo.Services.Implementations
 
         public async Task<Quiz> GetQuizById(int id)
         {
-            var quiz = await this.context.Quizzes.Include(q => q.QuizQuestions).FirstOrDefaultAsync(q => q.Id == id);
+            var quiz = await this.context.Quizzes
+                .Include(q => q.QuizQuestions.OrderBy(q => Guid.NewGuid()).Take(10))
+                .FirstOrDefaultAsync(q => q.Id == id);
 
             return quiz;
         }
@@ -68,6 +70,13 @@ namespace Quizaldo.Services.Implementations
             var user = await this.context.Users.FirstOrDefaultAsync(u => u.UserName == username);
 
             var quiz = await this.context.Quizzes.Include(q => q.QuizQuestions).FirstOrDefaultAsync(q => q.Id == model.Id);
+            var questions = new List<Question>();
+            foreach (var answer in model.Answers)
+            {
+                var question = await this.context.Questions.Where(q => q.Id == answer.QuestionId).FirstOrDefaultAsync();
+                questions.Add(question);
+
+            }
 
             if (user == null || quiz == null)
             {
@@ -82,10 +91,10 @@ namespace Quizaldo.Services.Implementations
 
             model.Result = results;
 
-            for (int i = 0; i < quiz.QuizQuestions.Count; i++)
+            for (int i = 0; i < questions.Count; i++)
             {
-                var questionId = quiz.QuizQuestions[i].Id;
-                var correctAnswer = quiz.QuizQuestions[i].CorrectAnswer;
+                var questionId = questions[i].Id;
+                var correctAnswer = questions[i].CorrectAnswer;
                 var currentAnswer = model.Answers.FirstOrDefault(x => x.QuestionId == questionId).Answer;
 
                 var result = currentAnswer == correctAnswer ? model.Result.UsersCorrectAnswers++ : model.Result.UsersWrongAnswers++;
