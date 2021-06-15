@@ -16,7 +16,7 @@
 ## Getting Started
 
 ###### To run the application you need:
-- .NET Core 3.1 
+- .NET Core 5.0 
 
 - If you don't have *Sql server* on your machine you should replace the configuration in *Quizaldo.Web/appsettings.json* with this code:
 ```
@@ -40,7 +40,7 @@ update-database
 
 ## Used technologies
 - C#
-- .NET Core 3.1
+- .NET Core 5.0
 - Entity Framework Core
 - Bootstrap
 - HTML
