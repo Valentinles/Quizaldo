@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="5.1.1" />
+    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.1.0" />
   </ItemGroup>
 
 
