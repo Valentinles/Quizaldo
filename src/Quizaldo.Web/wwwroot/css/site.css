@@ -106,3 +106,7 @@ body {
     vertical-align: middle;
     letter-spacing: -2px;
 }
+
+.badge {
+    background-color: transparent;
+}

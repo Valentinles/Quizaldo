@@ -16,7 +16,7 @@
             <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" title="Home"><i class="icon fas fa-home fa-2x" style="color: white"></i></a></li>
             @if (User.IsInRole("Admin"))
             {
-                <li><a class="nav-link text-dark" asp-area="" asp-controller="Notification" asp-action="RecentNotifications" title="Notifications"><i class="icon fas fa-bell fa-2x" style="color: white"></i></a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Notification" asp-action="RecentNotifications" title="Notifications"><i id="notification-icon" class="icon fas fa-bell fa-2x" style="color: white"></i></a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="CreateQuiz" title="Create Quiz"><i class="icon fas fa-plus-square fa-2x" style="color: white"></i></a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="AddQuestion" title="Add Question"><i class="icon fas fa-question-circle fa-2x" style="color: white"></i></a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="QuestionSuggestion" asp-action="AllSuggestions" title="All Suggestions"><i class="icon far fa-list-alt fa-2x" style="color: white"></i></a></li>
@@ -43,6 +43,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/notification.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
