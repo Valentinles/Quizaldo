@@ -6,9 +6,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Quizaldo.Common.ViewModels;
 using Quizaldo.Models;
 using Quizaldo.Services.Interfaces;
+using Quizaldo.Web.Hubs;
 
 namespace Quizaldo.Web.Controllers
 {
@@ -17,12 +19,18 @@ namespace Quizaldo.Web.Controllers
         private readonly IQuestionSuggestionService questionSuggestionService;
         private readonly IQuizService quizService;
         private readonly IMapper mapper;
+        private readonly IHubContext<NotificationHub> notificationHubContext;
 
-        public QuestionSuggestionController(IQuestionSuggestionService questionSuggestionService, IQuizService quizService, IMapper mapper)
+        public QuestionSuggestionController(
+            IQuestionSuggestionService questionSuggestionService,
+            IQuizService quizService,
+            IMapper mapper,
+            IHubContext<NotificationHub> notificationHubContext)
         {
             this.questionSuggestionService = questionSuggestionService;
             this.quizService = quizService;
             this.mapper = mapper;
+            this.notificationHubContext = notificationHubContext;
         }
 
         [Authorize]
@@ -44,6 +52,8 @@ namespace Quizaldo.Web.Controllers
             var suggestQuestion = mapper.Map<QuestionSuggestion>(questionSuggestion);
 
             await this.questionSuggestionService.SuggestQuestion(suggestQuestion, this.User.Identity.Name);
+
+            await notificationHubContext.Clients.All.SendAsync("sendNotification");
 
             return RedirectToAction("Index", "Home");
         }

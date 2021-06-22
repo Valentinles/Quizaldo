@@ -9,6 +9,8 @@ using Quizaldo.Common.ViewModels;
 using Quizaldo.Models;
 using Quizaldo.Services.Interfaces;
 using Quizaldo.Common.ServiceModels;
+using Microsoft.AspNetCore.SignalR;
+using Quizaldo.Web.Hubs;
 
 namespace Quizaldo.Web.Controllers
 {
@@ -17,11 +19,14 @@ namespace Quizaldo.Web.Controllers
     {
         private readonly IQuizService quizService;
         private readonly IMapper mapper;
+        private readonly IHubContext<NotificationHub> notificationHubContext;
 
-        public QuizController(IQuizService quizService, IMapper mapper)
+        public QuizController(IQuizService quizService, IMapper mapper, IHubContext<NotificationHub> notificationHubContext)
         {
             this.quizService = quizService;
             this.mapper = mapper;
+            this.notificationHubContext = notificationHubContext;
+
         }
 
         [Authorize(Roles = "Admin")]
@@ -76,6 +81,8 @@ namespace Quizaldo.Web.Controllers
             var quiz = mapper.Map<QuizServiceModel>(model);
 
             await this.quizService.StartQuiz(quiz, this.User.Identity.Name);
+
+            await notificationHubContext.Clients.All.SendAsync("sendNotification");
 
             return RedirectToAction("Result", "UserResult", new { id=quiz.Result.Id });
         }
