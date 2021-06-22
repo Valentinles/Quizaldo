@@ -42,6 +42,7 @@ update-database
 - C#
 - .NET Core 5.0
 - Entity Framework Core
+- SignalR
 - Bootstrap
 - HTML
 - CSS
