@@ -38,5 +38,14 @@ namespace Quizaldo.Web.Controllers
 
             return this.View(notifications);
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead()
+        {
+            await this.notificationService.MarkAsRead();
+
+            return RedirectToAction("RecentNotifications", "Notification");
+        }
     }
 }

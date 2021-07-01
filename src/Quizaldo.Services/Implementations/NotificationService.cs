@@ -71,5 +71,17 @@ namespace Quizaldo.Services.Implementations
                 .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
         }
+
+        public async Task MarkAsRead()
+        {
+            var notifications = await this.context.Notifications.ToListAsync();
+            foreach (var ntf in notifications)
+            {
+                ntf.IsRead = true;
+            }
+
+            this.context.Notifications.UpdateRange(notifications);
+            await this.context.SaveChangesAsync();
+        }
     }
 }

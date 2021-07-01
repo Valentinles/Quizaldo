@@ -12,6 +12,8 @@ namespace Quizaldo.Models
 
         public DateTime CreatedOn { get; set; }
 
+        public bool IsRead { get; set; } = false;
+
 
         public string UserId { get; set; }
 
