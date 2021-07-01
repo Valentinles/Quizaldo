@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "All Notifications";
 }
+@await Html.PartialAsync("_NotificationsMarkAsReadPartial");
 <div class="col-sm bg-transparent rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">All Time Notifications</h6>
     @foreach (var notification in Model)
@@ -10,10 +11,23 @@
         <div class="media text-dark pt-3 col-sm">
             <img alt="32x32" class="mr-2 rounded" style="width: 24px; height: 24px;" src="https://img.pngio.com/ci-notification-cents-cents-coin-icon-with-png-and-vector-format-notification-png-512_512.png" data-holder-rendered="true">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-dark">
-                    @notification.Text
-                </strong>
-                <small>@notification.CreatedOn.ToString("dd/MM/yyyy")</small>
+                @if (!notification.IsRead)
+                {
+                    <strong class="d-block text-dark">
+                        @notification.Text
+                    </strong>
+                    <small>@notification.CreatedOn.ToString("dd/MM/yyyy")</small>
+                    <div class="float-right">
+                        <i class="icon fas fa-exclamation fa-2x" style="color: white;" title="New Notification" aria-hidden="true"></i>
+                    </div>
+                }
+                else
+                {
+                    <strong class="d-block text-dark">
+                        @notification.Text
+                    </strong>
+                    <small>@notification.CreatedOn.ToString("dd/MM/yyyy")</small>
+                }
             </p>
         </div>
     }

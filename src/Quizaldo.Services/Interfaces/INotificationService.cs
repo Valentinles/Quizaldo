@@ -18,5 +18,7 @@ namespace Quizaldo.Services.Interfaces
         Task<IEnumerable<Notification>> GetRecentNotifications();
 
         Task<IEnumerable<Notification>> GetAllNotifications();
+
+        Task MarkAsRead();
     }
 }
